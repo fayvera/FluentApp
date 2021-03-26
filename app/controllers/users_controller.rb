@@ -12,6 +12,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def show
+        @user = User.find_by(:id => params[:id])
+    end
+
 
     private
 
@@ -20,7 +24,7 @@ class UsersController < ApplicationController
             :name,
             :username,
             :email,
-            :password
+            :password,
             :native_language
         )
     end

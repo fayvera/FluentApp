@@ -1,0 +1,10 @@
+<h1> Welcome <%= @user.name %></h1>
+<% if @user.admin == true %>
+    <h3>Admin User</h3>
+<% end %>    
+
+<ul>
+    <div><%= @user.username %></div>
+    <div><%= @user.native_language %></div>
+
+</ul>
