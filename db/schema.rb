@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_020609) do
+ActiveRecord::Schema.define(version: 2021_03_26_030304) do
 
   create_table "calls", force: :cascade do |t|
     t.time "schedule_time"
     t.datetime "duration"
     t.integer "speaker_id"
     t.integer "caller_id"
+    t.integer "language_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -26,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_020609) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "native_language"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
