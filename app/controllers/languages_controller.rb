@@ -6,7 +6,7 @@ class LanguagesController < ApplicationController
     end
 
     def show
-        @language = Language.find_by()
+        @language = Language.find_by_slug(params[:id])
     end
 
 
