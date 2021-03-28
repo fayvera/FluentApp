@@ -3,6 +3,8 @@ class User < ApplicationRecord
     validates_presence_of :name, :username, :email, :password 
     validates_uniqueness_of :username, :email
 
+    has_many :user_languages
+    has_many :languages, through: :user_languages
     
 
     #as a caller
@@ -13,7 +15,6 @@ class User < ApplicationRecord
     has_many :caller_calls, foreign_key: "caller_id", class_name: "Call"
     has_many :callers, through: :callers_calls, class_name: "User"
 
-    has_many :languages 
     private
 
 end

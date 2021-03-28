@@ -1,6 +1,7 @@
 class Language < ApplicationRecord
     has_many :calls 
-    has_many :users, foreign_key: :native_language
+    has_many :user_languages
+    has_many :users, through: :user_languages
 
     def slug 
         self.name.downcase.gsub(" ", '-')

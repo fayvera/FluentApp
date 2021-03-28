@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
-  resources :user_languages
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-    # sessions
-
-    
+  # sessions
+  
   root "static#home"
   resources :languages
   resources :calls
-  resources :users
-    get "/signin", to: "sessions#new"
+  resources :users  
+    # resources :admin
+
+  get "/signin", to: "sessions#new"
     post "/session", to: "sessions#create"
     delete "/signout", to: "sessions#destroy"  
-
+    
+    
+    resources :user_languages
 
 end

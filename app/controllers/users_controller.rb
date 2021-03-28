@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     def new 
         @user = User.new
+        @user.languages.each{|language| @language = language}
     end
 
     def create
@@ -24,8 +25,7 @@ class UsersController < ApplicationController
             :name,
             :username,
             :email,
-            :password,
-            :native_language
+            :password
         )
     end
 end

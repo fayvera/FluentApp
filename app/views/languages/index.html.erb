@@ -1,7 +1,13 @@
-<h1> Practice Your Fluency! </h1>
+<div class='center'><h1> Practice Your Fluency! </h1>
+    <p>Choose the language you want to practice with a native speaker:</p>
+
+</div>
+
 
 <ul>
-    <%= @languages.each do |language| %>
-        <div><%= language.name %></div>
+    <% @languages.each do |language| %>
+        <div><%= link_to language.name, language_path(language) %></div>
     <% end %>
 </ul>    
+
+

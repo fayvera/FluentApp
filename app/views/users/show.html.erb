@@ -1,10 +1,14 @@
+<div class="center">
 <h1> Welcome <%= @user.name %></h1>
+</div>
 <% if @user.admin == true %>
     <h3>Admin User</h3>
 <% end %>    
 
 <ul>
-    <div><%= @user.username %></div>
-    <div><%= @user.native_language %></div>
+    <div class="center">Username: <%= @user.username %></div>
 
 </ul>
+
+
+<%= link_to "Languages", languages_path %>
