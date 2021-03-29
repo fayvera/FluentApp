@@ -4,6 +4,10 @@ class Language < ApplicationRecord
     has_many :users, through: :user_languages
 
     def slug 
-        self.name.downcase.gsub(" ", '-')
+        name.downcase.gsub(" ", "-")
     end
+
+    def self.find_by_slug(slug)
+        Language.all.find{|language| language.slug == slug}
+    end 
 end

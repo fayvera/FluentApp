@@ -1,12 +1,13 @@
 class LanguagesController < ApplicationController
-    before_action :set_language, only: [:show]
+    # before_action :set_language, only: [:show]
 
     def index
         @languages = Language.all
     end
 
     def show
-        @language = Language.find_by_slug(params[:id])
+        # byebug
+        @language = Language.find_by_slug(language_params)
     end
 
 

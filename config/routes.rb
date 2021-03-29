@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   # sessions
   
   root "static#home"
-  resources :languages
+  resources :languages, param: :slug
+  # get '/languages/#{slug}', to: "languages#show"
   resources :calls
   resources :users  
     # resources :admin
