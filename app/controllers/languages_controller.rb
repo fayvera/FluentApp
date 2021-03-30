@@ -10,7 +10,6 @@ class LanguagesController < ApplicationController
     end
 
     def show
-        byebug
         @language = Language.find_by_slug(params[:slug])
     end
 
