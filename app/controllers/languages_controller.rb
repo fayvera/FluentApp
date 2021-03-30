@@ -15,8 +15,25 @@ class LanguagesController < ApplicationController
     end
 
     def new 
-
+        if current_user.admin && User.admin == true
+            @language = Language.new
+        else
+            redirect_to languages_path
+        end
     end
+
+    def create
+        if current_user.admin && User.admin == true
+            @language = Language.new(language_params)
+            if @language.save
+                redirect_to language_path
+            else
+                render 'new'
+            end
+        else
+            redirect_to languages_path
+        end
+    end 
 
 
     private
