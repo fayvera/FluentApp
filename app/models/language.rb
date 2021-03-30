@@ -3,6 +3,8 @@ class Language < ApplicationRecord
     has_many :user_languages
     has_many :users, through: :user_languages
 
+    
+
     scope :search_by_language, -> (search) {where("name LIKE ?", "#{search}%")}
 
     def slug 
