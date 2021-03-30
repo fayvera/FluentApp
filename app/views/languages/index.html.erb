@@ -2,10 +2,16 @@
     <p>Choose the language you want to practice with a native speaker:</p>
 
 </div>
+<div class='center'>
+    <%= form_with(url:languages_path, method: :get) do |f| %>
+        <%= f.label :search, "Search Language" %>
+        <%= f.text_field :search %>
+        <%= f.submit "Search" %>
+    <% end %>    
+</div>
 
-
-<ul>
-    <% @languages.each do |language| %>
+<ul class="center">
+    <% @languages.each do |language|%>
         <div><%= link_to language.name, language_path(language) %></div>
     <% end %>
 </ul>    

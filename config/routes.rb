@@ -3,16 +3,18 @@ Rails.application.routes.draw do
   # sessions
   
   root "static#home"
-  resources :languages, param: :slug
+  resources :languages, param: :slug, only: [:show, :index]
   # get '/languages/#{slug}', to: "languages#show"
   resources :calls
   resources :users  
-    # resources :admin
+  scope '/admin' do
+    resources :languages, only: [:new, :create, :edit, :update, :delete]
+  end
 
   get "/signin", to: "sessions#new"
-    post "/session", to: "sessions#create"
-    delete "/signout", to: "sessions#destroy"  
-    
+  post "/session", to: "sessions#create"
+  delete "/signout", to: "sessions#destroy"  
+  # get '/login', to:   
     
     resources :user_languages
 

@@ -1,15 +1,22 @@
 class LanguagesController < ApplicationController
-    # before_action :set_language, only: [:show]
+    # before_action :set_language, only: [:index]
 
     def index
-        @languages = Language.all
+        if params["search"]
+            @language = Language.search_by_language(params["search"]) 
+        else
+            @languages = Language.all
+        end
     end
 
     def show
-        # byebug
         @language = Language.find_by_slug(language_params)
+        byebug
     end
 
+    def new 
+
+    end
 
 
     private
