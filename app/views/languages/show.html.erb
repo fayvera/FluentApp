@@ -1,5 +1,11 @@
 <h1><%= @language.name %></h1>
 
+<% if @language.users.count == 1 %>
+<p> There is 1 speaker for this language</p>
+<% else %>
+<p> There are <%= @language.users.count %> speakers for this language</p>
+<% end %>
+</br>
 
 <ul> 
     <% @language.users.each do |user| %>

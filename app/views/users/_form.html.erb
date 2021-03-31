@@ -30,12 +30,10 @@
     <%= f.email_field :email %>
     </div>
 
-            <div>   
-            <% f.label :languages, "What Languages do you speak?" %>
-                <% @user.languages.each do |language| %>
-                <%= f.check_box :languages, language.name %>
-            <% end %>    
-            </div>
+    <div>   
+    <% f.label :language_ids, "What Languages do you speak?" %><br>
+      <%= f.collection_check_boxes :language_ids, @languages, :id, :name %>
+    </div>
 
     <div>
     <%= f.label :password, "Password" %><br>

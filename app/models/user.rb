@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     validates_presence_of :name, :username, :email, :password 
     validates_uniqueness_of :username, :email
+    validates_confirmation_of :password
 
     has_many :user_languages
     has_many :languages, through: :user_languages

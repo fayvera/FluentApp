@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     skip_before_action :verified_user, only: [:new, :create]
     before_action :current_user
-    before_action :set_user, only: [:edit, :show]
+    before_action :set_user, only: [:edit, :update, :show]
     
 
     def new 
@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     end
 
     def create
-        # byebug
         if user = User.create(user_params)
             session[:user_id] = user.id
             redirect_to user_path(user)
@@ -27,7 +26,14 @@ class UsersController < ApplicationController
     end
 
     def update
-        
+        @user.update(user_params)
+        if @user.valid?
+            redirect_to user_path(@user)
+        else
+            # binding.pry
+            @user.build(params)
+            render :edit
+        end
     end
 
     private
@@ -37,10 +43,13 @@ class UsersController < ApplicationController
             :name,
             :username,
             :email,
-            :password
+            :password, 
+            :password_confirmation,
+            :language_ids => []
         )
     end
     def set_user 
         @user = User.find_by(:id => params[:id])
     end 
+
 end
