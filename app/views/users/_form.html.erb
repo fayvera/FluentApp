@@ -30,7 +30,12 @@
     <%= f.email_field :email %>
     </div>
 
-
+            <div>   
+                <% @languages.each do |language| %>
+                    <% binding.pry %>
+                    <%= f.check_box :language %>
+                <% end %>    
+            </div>
 
     <div>
     <%= f.label :password, "Password" %><br>

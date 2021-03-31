@@ -15,6 +15,5 @@ class User < ApplicationRecord
     has_many :caller_calls, foreign_key: "caller_id", class_name: "Call"
     has_many :callers, through: :callers_calls, class_name: "User"
 
-    private
 
 end
