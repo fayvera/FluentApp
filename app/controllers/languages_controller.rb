@@ -11,6 +11,9 @@ class LanguagesController < ApplicationController
 
     def show
         @language = Language.find_by_slug(params[:slug])
+        if @language.nil?  
+            redirect_to languages_path
+        end 
     end
 
     def new 

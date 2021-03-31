@@ -7,5 +7,9 @@
 
 <ul>
     <div class="center">Username: <%= @user.username %></div>
-
+    
 </ul>
+
+<%= @user.languages.each do |language| %>
+    <%= language.name %>
+<% end %>

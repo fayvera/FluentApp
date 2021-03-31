@@ -8,11 +8,12 @@
         <%= f.text_field :search %>
         <%= f.submit "Search" %>
     <% end %>    
-</div>
+</div> 
 
 <ul class="center">
-    <% @languages.each do |language|%>
-        <div><%= link_to language.name, language_path(language) %></div>
+
+<% @languages.each do |language|%>
+        <div><%= link_to language.name, language_path(language.slug) %></div>
     <% end %>
 </ul>    
 

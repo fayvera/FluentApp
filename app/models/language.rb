@@ -14,4 +14,12 @@ class Language < ApplicationRecord
     def self.find_by_slug(slug)
         Language.all.find{|language| language.slug == slug}
     end 
+
+    # def self.search_by_language(search)
+    #     if search 
+    #         self.where("name LIKE ?", "#{search}%")
+    #     else
+    #         self.all
+    #     end
+    # end
 end
