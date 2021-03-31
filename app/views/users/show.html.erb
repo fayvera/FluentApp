@@ -9,7 +9,9 @@
     <div class="center">Username: <%= @user.username %></div>
     
 </ul>
-
-<%= @user.languages.each do |language| %>
-    <%= language.name %>
+<div>
+<p>Languages you speak: </p>
+<% @user.languages.each do |language| %>
+    <%= link_to language.name, language_path(language.slug) %>
 <% end %>
+</div>

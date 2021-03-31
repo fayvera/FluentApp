@@ -33,7 +33,7 @@
             <div>   
             <% f.label :languages, "What Languages do you speak?" %>
                 <% @user.languages.each do |language| %>
-                <%= f.check_box :language, language.name %>
+                <%= f.check_box :languages, language.name %>
             <% end %>    
             </div>
 
