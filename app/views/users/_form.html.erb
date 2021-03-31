@@ -31,10 +31,11 @@
     </div>
 
             <div>   
-                <% @languages.each do |language| %>
-                    <% binding.pry %>
-                    <%= f.check_box :language %>
-                <% end %>    
+            <% f.label :languages, "What Languages do you speak?" %>
+                <% @user.languages.each do |language| %>
+                <% binding.pry %>
+                <%= f.check_box :language %>
+            <% end %>    
             </div>
 
     <div>
@@ -48,6 +49,7 @@
     </div>
 
     <br>
+
     <%= f.submit %>
 
 <% end %>

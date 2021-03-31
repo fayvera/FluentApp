@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
     def new 
         @user = User.new
-        @user.languages.each{|language| @language = language}
     end
 
     def create
