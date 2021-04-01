@@ -9,9 +9,9 @@
 
     <% if @user.errors.any? %>
     <div id="error_explanation">
-     <h2> 
+     <h4> 
         <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
-    </h2>        
+    </h4>        
 
     <ul>
     <% @user.errors.full_messages.each do |message| %>
@@ -21,29 +21,17 @@
     </div>
 <% end %>
 
-<div>
-<%= f.text_field :name, placeholder:'Name' %>
-</div>
-
-<div>
-<%= f.text_field :username, placeholder:"Username" %>
-</div>
 
 
 <div>
 <%= f.email_field :email, placeholder:"Email" %>
 </div>
 
-<div>   
-<% f.label :language_ids, "What Languages do you speak?" %><br>
-
-<%= f.collection_check_boxes(:language_ids, @languages, :id, :name) %>
-</div>
 <br>
 <div>
 <%= f.password_field :password, placeholder:"Password" %>
 </div>
-
+<br>
 <div>
 <%= f.password_field :password_confirmation, placeholder:"Confirm Password" %>
 </div>

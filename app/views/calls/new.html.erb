@@ -1,13 +1,17 @@
 
 <div class="center">
-    <h1 class="center">Schedule a call<h1>
-<%= form_for @call, url: '/languages/@language.slug/calls/new' do |f| %>
-    
+    <h1 class="center">Schedule a call</h1>
+
+<%= form_for @call, url: new_language_call_path do |f| %>
+    <div>
     <%= f.label :schedule_time, "Select a date" %><br>
-    <%= f.datetime_field :schedule_time %><br>
+    <%= f.datetime_field :schedule_time %><br/><br>
+    </div>
 
-    <%=f.number_field :duration, placeholder:"Duration in minutes" %><br>
-
+    <div>
+    <%=f.number_field :duration, placeholder:"Duration in minutes" %><br/>
+    </div><br>
+    
     <%=f.submit %>
 
 <% end %>    

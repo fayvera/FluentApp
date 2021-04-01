@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   root "static#home"
   resources :languages, param: :slug, except: [:new, :create, :edit, :update, :delete] do
-    resources :calls
+    resources :calls, only: [:new, :create, :show]
   end
 
   resources :users, param: :slug  

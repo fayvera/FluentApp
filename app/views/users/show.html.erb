@@ -1,5 +1,9 @@
 <div class="center">
-<h1 class="center"> Welcome <%= @user.name %></h1>
+<% if @user.name %>
+    <h1 class="center"> Welcome <%= @user.name %></h1>
+<% else %>
+    <h1 class="center"> Welcome! </h1>
+<% end %>    
 
 <% if @user.admin == true %>
     <h3>Admin User</h3>

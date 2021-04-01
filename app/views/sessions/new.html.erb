@@ -7,6 +7,20 @@
 <%= form_for(@user, url: login_path) do |f| %>
     <div>
 
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+     <h4> 
+        <%= pluralize(@user.errors.count, "error") %> you from logging in:
+    </h4>        
+
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+        <%= message %><br>
+    <% end %>
+    </ul>
+    </div>
+<% end %>
+
     <%= f.text_field :username, placeholder: "Username" %><br>
     </div><br>
 

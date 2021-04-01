@@ -1,22 +1,19 @@
 class CallsController < ApplicationController
     before_action :verified_user
-    before_action :find_user 
+    before_action :find_user, :find_langauge 
 
     def show
     end
 
     def new
-        # binding.pry
         @call = Call.new
-        @language = Language.find_by_slug(params[:slug])
-
     end
 
     def create
-        @language = Language.find_by_slug(params[:slug])
+        binding.pry
         if current_user.languages.include?(@language)
             speaker_to_current_user
-            redirect_to 
+            redirect_to language_call_path(@language.slug)
         else
             caller_to_current_user
         end
@@ -44,5 +41,9 @@ class CallsController < ApplicationController
 
     def find_user
         @user = User.find_by_slug(params[:slug])
+    end
+
+    def find_langauge
+        @language = Language.find_by_slug(params[:slug])
     end
 end
