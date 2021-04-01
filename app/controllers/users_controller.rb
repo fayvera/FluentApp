@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     skip_before_action :verified_user, only: [:new, :create]
     before_action :current_user
-    before_action :set_user, only: [:edit, :update, :show]
+    before_action :set_user, only: [:edit, :update]
     
 
     def new 
@@ -11,14 +11,17 @@ class UsersController < ApplicationController
     def create
         if user = User.create(user_params)
             session[:user_id] = user.id
-            redirect_to user_path(user)
+            redirect_to user_path(user) 
         else
             render 'new'
         end
     end
 
     def show
-        
+        @user = User.find_by_slug(params[:slug])
+        if @user.nil?  
+            redirect_to user_path(current_user)
+        end 
     end
 
     def edit
@@ -31,7 +34,7 @@ class UsersController < ApplicationController
             redirect_to user_path(@user)
         else
             # binding.pry
-            @user.build(params)
+            @user.build(user_params)
             render :edit
         end
     end
