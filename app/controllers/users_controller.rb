@@ -5,13 +5,17 @@ class UsersController < ApplicationController
     
 
     def new 
+        # binding.pry
         @user = User.new
+        @languages = Language.all
     end
 
     def create
-        if user = User.create(user_params)
+        @user = User.new(user_params)
+        if @user.valid?
+            @user.save
             session[:user_id] = user.id
-            redirect_to user_path(user) 
+            redirect_to user_path(@user.slug) 
         else
             render 'new'
         end
@@ -25,6 +29,7 @@ class UsersController < ApplicationController
     end
 
     def edit
+
         @languages = Language.all
     end
 

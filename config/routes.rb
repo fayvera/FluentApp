@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   scope '/admin' do
     resources :languages, only: [:new, :create, :edit, :update, :delete]
+    resources :users, param: :slug
+    # get '/admin/login', to "sessions#new"
+    # get '/admin/signup', to "users#new"
   end
 
 

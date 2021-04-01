@@ -95,9 +95,34 @@ li.dropdown {
   display: block;
 }
 
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+}
+
+/* Middle column */
 .column.middle {
   width: 50%;
-  
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
 }
 
 
@@ -123,4 +148,14 @@ li.dropdown {
   display: block;
   margin: 0.2em auto;
   }
+}
+
+.logo {
+  size: '260x180';
+}
+
+h1.center {
+  font-size: 40px;
+  color: #F3F3F3;
+  margin: 2%;
 }
