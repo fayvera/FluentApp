@@ -3,7 +3,6 @@ class CallsController < ApplicationController
     before_action :find_user 
 
     def show
-        
     end
 
     def new

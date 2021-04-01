@@ -33,12 +33,10 @@ class UsersController < ApplicationController
 
     def update
         # binding.pry
-        @user.update(user_params)
-        if @user.valid?
-            message = "User updated successfully"
-            redirect_to user_path(@user), flash: {message: message}
+        if @user.update(user_params)
+            redirect_to user_path(@user)
         else
-            @user.build(user_params)
+            # @user.build(user_params)
             render :edit
         end
     end
