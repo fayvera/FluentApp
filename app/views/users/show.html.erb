@@ -15,7 +15,13 @@
 
 
 <p>Languages you speak: </p>
-<% @user.languages.each do |language| %>
-    <%= link_to language.name, language_path(language.slug) %><br>
+<% if @user.languages.count == 0 %>
+<br>
+    <p> You have not set up your account! <br>
+     Please go to settings and edit your account.</p>
+<% else %>     
+    <% @user.languages.each do |language| %>
+        <%= link_to language.name, language_path(language.slug) %><br>
+    <% end %>
 <% end %>
 </div>
