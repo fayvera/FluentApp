@@ -1,3 +1,8 @@
+<div class="center">
+<%= image_tag("FluentApp_Logo.png", width: '100px') %>
+</div>
+
+<div class='center'>
 <h1 class="center"> Sign Up </h1>
 
 <%= form_for @user do |f| %>
@@ -17,37 +22,29 @@
 <% end %>
 
 <div>
-<%= f.label :name, "Name" %><br>
-<%= f.text_field :name %>
+<%= f.text_field :name, placeholder:'Name' %>
 </div>
 
 <div>
-<%= f.label :username, "Username" %><br>
-<%= f.text_field :username %>
+<%= f.text_field :username, placeholder:"Username" %>
 </div>
 
 
 <div>
-<%= f.label :email, "Email" %><br>
-<%= f.email_field :email %>
+<%= f.email_field :email, placeholder:"Email" %>
 </div>
 
 <div>   
-
 <% f.label :language_ids, "What Languages do you speak?" %><br>
-    What languages do you speak?<br>
-
-  <%= f.collection_check_boxes :language_ids, @languages, :id, :name %>
+<%= f.collection_check_boxes(:language_ids, @languages, :id, :name) %>
+</div>
+<br>
+<div>
+<%= f.password_field :password, placeholder:"Password" %>
 </div>
 
 <div>
-<%= f.label :password, "Password" %><br>
-<%= f.password_field :password %>
-</div>
-
-<div>
-<%= f.label :password_confirmation, "Confirm Password" %><br>
-<%= f.password_field :password_confirmation %>
+<%= f.password_field :password_confirmation, placeholder:"Confirm Password" %>
 </div>
 
 <br>

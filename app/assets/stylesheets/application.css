@@ -129,6 +129,19 @@ input[type=submit] {
       margin: 0.2em auto;
     }
   }
+
+  input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    vertical-align: bottom;
+}
+label.checkbox {
+    vertical-align: top;
+    line-height: 24px;
+    margin: 2px 0;
+    display: block;
+    height: 24px;
+}
   
 /*Static Page */
 .button {
