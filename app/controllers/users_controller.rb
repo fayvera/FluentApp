@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     skip_before_action :verified_user, only: [:new, :create]
     before_action :current_user
-    before_action :set_user, only: [:edit, :update]
+    before_action :set_user, only: [:show, :edit, :update]
     
 
     def new 
@@ -22,14 +22,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by_slug(params[:slug])
         if @user.nil?  
             redirect_to user_path(current_user.slug)
         end 
     end
 
     def edit
-
         @languages = Language.all
     end
 
@@ -37,7 +35,8 @@ class UsersController < ApplicationController
         # binding.pry
         @user.update(user_params)
         if @user.valid?
-            redirect_to user_path(@user), message: "User updated successfully"
+            message = "User updated successfully"
+            redirect_to user_path(@user), flash: {message: message}
         else
             @user.build(user_params)
             render :edit
@@ -57,7 +56,7 @@ class UsersController < ApplicationController
         )
     end
     def set_user 
-        @user = User.find_by(:id => params[:id])
+        @user = User.find_by_slug(params[:slug])
     end 
 
 end
