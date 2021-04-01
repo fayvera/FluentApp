@@ -4,7 +4,7 @@ class LanguagesController < ApplicationController
 
     def index
         if params["search"]
-            @language = Language.search_by_language(params["search"]) 
+            @language = Language.search_by_language(params["search"]).first
         else
             @languages = Language.all
         end

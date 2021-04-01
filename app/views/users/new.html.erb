@@ -1,2 +1,58 @@
 <h1 class="center"> Sign Up </h1>
-<%= render 'form' %>
+
+<%= form_for @user do |f| %>
+
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+     <h2> 
+        <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+    </h2>        
+
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li> 
+        <% end %>
+    </ul>
+    </div>
+<% end %>
+
+<div>
+<%= f.label :name, "Name" %><br>
+<%= f.text_field :name %>
+</div>
+
+<div>
+<%= f.label :username, "Username" %><br>
+<%= f.text_field :username %>
+</div>
+
+
+<div>
+<%= f.label :email, "Email" %><br>
+<%= f.email_field :email %>
+</div>
+
+<div>   
+
+<% f.label :language_ids, "What Languages do you speak?" %><br>
+    What languages do you speak?<br>
+
+  <%= f.collection_check_boxes :language_ids, @languages, :id, :name %>
+</div>
+
+<div>
+<%= f.label :password, "Password" %><br>
+<%= f.password_field :password %>
+</div>
+
+<div>
+<%= f.label :password_confirmation, "Confirm Password" %><br>
+<%= f.password_field :password_confirmation %>
+</div>
+
+<br>
+
+<%= f.submit %>
+
+<% end %>
+</div>

@@ -1,2 +1,11 @@
 hey there call
 
+<%= form_for @call, url: '/languages/@language.slug/calls/new' do |f| %>
+    
+    <%= f.text_field :schedule_time %><br>
+
+    <%=f.number_field :duration, placeholder:"Duration" %><br>
+
+    <%=f.submit %>
+
+<% end %>    

@@ -6,6 +6,10 @@ class CallsController < ApplicationController
     end
 
     def new
+        # binding.pry
+        @call = Call.new
+        @language = Language.find_by_slug(params[:slug])
+
     end
 
     def create

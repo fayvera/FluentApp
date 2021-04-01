@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     
 
     def new 
-        # binding.pry
         @user = User.new
         @languages = Language.all
     end
@@ -33,7 +32,6 @@ class UsersController < ApplicationController
     end
 
     def update
-        # binding.pry
         if @user.update(user_params)
             redirect_to user_path(@user.slug)
         else
