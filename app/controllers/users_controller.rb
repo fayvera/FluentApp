@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        @languages = Language.all
         if @user.nil?  
             redirect_to user_path(current_user.slug)
         end 
@@ -34,9 +35,8 @@ class UsersController < ApplicationController
     def update
         # binding.pry
         if @user.update(user_params)
-            redirect_to user_path(@user)
+            redirect_to user_path(@user.slug)
         else
-            # @user.build(user_params)
             render :edit
         end
     end

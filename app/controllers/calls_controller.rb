@@ -10,7 +10,7 @@ class CallsController < ApplicationController
 
     def create
         @language = Language.find_by_slug(params[:slug])
-        if current_user.languages.indlude?(@language)
+        if current_user.languages.include?(@language)
             speaker_to_current_user
             redirect_to 
         else
