@@ -12,6 +12,6 @@
 <div>
 <p>Languages you speak: </p>
 <% @user.languages.each do |language| %>
-    <%= link_to language.name, language_path(language.slug) %>
+    <%= link_to language.name, language_path(language.slug) %><br>
 <% end %>
 </div>

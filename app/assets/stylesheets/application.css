@@ -18,7 +18,7 @@
    background-color: #8EC0E7;
    padding-bottom: 30px;
    margin: 0px;
-   font: Hind Siliguri Light;
+   font-family: 'Hind Siliguri', sans-serif;
   }
    
 .center {
@@ -35,7 +35,7 @@
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 16px;
   text-decoration: none;
 }
 
@@ -64,7 +64,9 @@ li a:hover, .dropdown:hover .dropbtn {
 }
 
 li.dropdown {
-  display: inline-block;
+  display: block;
+  float: right;
+  margin-right: 5%;
 }
 
 .dropdown-content {
@@ -75,14 +77,16 @@ li.dropdown {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   padding: 0px;
+
 }
 
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  /* padding: 12px 16px; */
   text-decoration: none;
   display: block;
-  text-align: right;
+  text-align: left;
+
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1;}

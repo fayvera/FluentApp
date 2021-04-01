@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     def show
         @user = User.find_by_slug(params[:slug])
         if @user.nil?  
-            redirect_to user_path(current_user)
+            redirect_to user_path(current_user.slug)
         end 
     end
 
@@ -29,11 +29,11 @@ class UsersController < ApplicationController
     end
 
     def update
+        # binding.pry
         @user.update(user_params)
         if @user.valid?
-            redirect_to user_path(@user)
+            redirect_to user_path(@user), message: "User updated successfully"
         else
-            # binding.pry
             @user.build(user_params)
             render :edit
         end

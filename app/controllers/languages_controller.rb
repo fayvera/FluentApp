@@ -1,5 +1,6 @@
 class LanguagesController < ApplicationController
     before_action :set_language, only: [:edit, :update, :destroy]
+    # before_action :is_admin?, only: [:new, :create, :edit, :update, :destroy]
 
     def index
         if params["search"]
@@ -17,15 +18,15 @@ class LanguagesController < ApplicationController
     end
 
     def new 
-        if current_user = User.admin(true)
+        if is_admin?
             @language = Language.new
         else
-            redirect_to languages_path
+            redirect_to languages_path, message: "User not authorized"
         end
     end
 
     def create
-        if current_user = User.admin(true)
+        if is_admin?
             @language = Language.new(language_params)
             if @language.save
                 redirect_to language_path
@@ -46,6 +47,10 @@ class LanguagesController < ApplicationController
 
     def language_params
         params.require(:language).permit(:name)
+    end
+
+    def is_admin?
+        current_user.admin == true
     end
 
 end

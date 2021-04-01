@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -16,15 +17,23 @@
         <%= link_to "Home", user_path(current_user.slug), class:'link'%>
         <%= link_to "Languages", languages_path, class:'link' %>
         <li class="dropdown">
-          <a class="dropbtn" float="right">Settings</a>
+          <a class="dropbtn" >Settings</a>
           <div class="dropdown-content">
               <%= link_to "Edit Account", edit_user_path(current_user.slug)%><br>
               <%= link_to "Log Out", logout_path %>
-          </div>
-        </li>    
-        </div>
+              </div>
+              </li>    
+              </div>
+
   <% end %>
 
+  <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
+  
+  
     <%= yield %>
   </body>
 </html>
