@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     skip_before_action :verified_user, only: [:new, :create]
     before_action :current_user
     before_action :set_user, only: [:show, :edit, :update]
-    before_action :get_languages, only: [:show, :edit, :new]
+    before_action :get_languages, only: [:show, :edit, :update, :new, :create]
     
 
     def new 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
         end
     end
 
-    
+
     def show
         if @user.nil?  
             redirect_to user_path(current_user.slug)

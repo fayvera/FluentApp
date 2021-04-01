@@ -13,11 +13,6 @@
 <ul class="center">
 
 
-<% if params["search"] %>
-    <%= link_to @language.name, language_path(@language.slug) %> 
- 
-<% end %>    
-
 
 <% @languages.each do |language|%>
     <div><%= link_to language.name, language_path(language.slug) %></div>

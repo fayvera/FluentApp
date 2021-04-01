@@ -1,11 +1,14 @@
-hey there call
 
+<div class="center">
+    <h1 class="center">Set up a call<h1>
 <%= form_for @call, url: '/languages/@language.slug/calls/new' do |f| %>
     
-    <%= f.text_field :schedule_time %><br>
+    <%= f.label :schedule_time, "Select a date" %><br>
+    <%= f.datetime_field :schedule_time %><br>
 
     <%=f.number_field :duration, placeholder:"Duration" %><br>
 
     <%=f.submit %>
 
 <% end %>    
+</div>
