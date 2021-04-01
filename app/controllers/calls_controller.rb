@@ -10,7 +10,6 @@ class CallsController < ApplicationController
     end
 
     def create
-        binding.pry
         if current_user.languages.include?(@language)
             speaker_to_current_user
             redirect_to language_call_path(@language.slug)

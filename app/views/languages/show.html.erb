@@ -6,17 +6,16 @@
 <% else %>
 <p> There are <%= @language.users.count %> speakers for this language</p>
 <% end %>
-</br>
 
-<ul> 
-    <% @language.users.each do |user| %>
-        <%= user.name %><br>
+
+<% @language.users.each do |user| %>
+    <%= user.name %><br>
     <% end %>
-</ul>
+    
+    </br>
 
 
-        Call a native speaker! <br/>
-        <br>
+        <h3>Call a native speaker!</h3>
         <%= link_to "Call", new_language_call_path(@language.slug), class:"button"%>
 </div>
 
