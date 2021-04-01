@@ -33,9 +33,7 @@
     <div>   
 
     <% f.label :language_ids, "What Languages do you speak?" %><br>
-        What languages do you speak?<br>
-
-      <%= f.collection_check_boxes :language_ids, @languages, :id, :name %>
+      <%= f.collection_check_boxes(:language_ids, @languages, :id, :name)%>
     </div>
 
     <div>
@@ -54,3 +52,4 @@
 
 <% end %>
 </div>
+

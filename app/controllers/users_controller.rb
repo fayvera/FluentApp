@@ -2,11 +2,11 @@ class UsersController < ApplicationController
     skip_before_action :verified_user, only: [:new, :create]
     before_action :current_user
     before_action :set_user, only: [:show, :edit, :update]
+    before_action :get_languages, only: [:show, :edit, :new]
     
 
     def new 
         @user = User.new
-        @languages = Language.all
     end
 
     def create
@@ -20,15 +20,15 @@ class UsersController < ApplicationController
         end
     end
 
+    
     def show
-        @languages = Language.all
         if @user.nil?  
             redirect_to user_path(current_user.slug)
         end 
     end
 
+
     def edit
-        @languages = Language.all
     end
 
     def update
@@ -54,5 +54,9 @@ class UsersController < ApplicationController
     def set_user 
         @user = User.find_by_slug(params[:slug])
     end 
+
+    def get_languages
+        @languages = Language.all
+    end
 
 end
