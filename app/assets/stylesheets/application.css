@@ -29,6 +29,8 @@
   overflow: hidden;
   background-color: #019CDD;
   cursor: pointer;
+
+ 
 }
 .topnav a {
   float: left;
@@ -155,7 +157,16 @@ li.dropdown {
 }
 
 h1.center {
-  font-size: 40px;
+  font-size: 50px;
   color: #F3F3F3;
   margin: 2%;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  align: center;
+  
 }
