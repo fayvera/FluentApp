@@ -15,18 +15,19 @@ class CallsController < ApplicationController
         @call.language = @language
         # @call.duration = params["call"]["duration"].strftime("%M")
         # binding.pry
+        @call.select_random_speaker
         if current_user.languages.include?(@language)
             speaker_to_current_user
-            redirect_to language_call_path(@language.slug, @call)
+            redirect_to language_call_path(@language.slug, @call.id)
         else
-             @call.save
-                caller_to_current_user
-                # @call.speaker.id = @language.users.
-                flash[:message] = "Call not available"
-                redirect_to language_call_path(@language.slug, @call)
-            # else
-            #     render :new
-            # end
+            caller_to_current_user
+            
+            if @call.save
+                flash[:message] = "Call Booked"
+                redirect_to language_call_path(@language.slug, @call.id)
+            else
+                render :new
+            end
         end
     end
 
@@ -42,9 +43,9 @@ class CallsController < ApplicationController
         )
     end
 
-    def speaker_to_current_user
-        @call.speaker_id = current_user.id 
-    end 
+    # def speaker_to_current_user
+    #     @call.speaker_id = current_user.id 
+    # end 
 
     def caller_to_current_user
         @call.caller_id = current_user.id
