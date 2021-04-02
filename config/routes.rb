@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     # get '/admin/login', to "sessions#new"
     # get '/admin/signup', to "users#new"
   end
+  get 'auth/:provider/callback', to: 'sessions#omniauth'
 
 
   get "/signin", to: "users#new"
