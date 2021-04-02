@@ -1,17 +1,12 @@
 <div class="center">
 <h1 class="center"><%= @language.name %></h1>
 
-<% if @language.users.count == 1 %>
+<% if @language.speakers.count == 1 %>
 <p> There is 1 speaker for this language</p>
 <% else %>
-<p> There are <%= @language.users.count %> speakers for this language</p>
+<p> There are <%= @language.speakers.count %> speakers for this language</p>
 <% end %>
 
-
-<% @language.users.each do |user| %>
-    <%= user.name %><br>
-    <% end %>
-    
     </br>
 
 

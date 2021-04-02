@@ -2,7 +2,6 @@ class User < ApplicationRecord
     has_secure_password
     validates_presence_of :email, :password, message: "Please fill out all fields"
     validates_uniqueness_of :email
-    # validates :username, uniqueness: true
     validates :password, length: {minimum: 8, message: "Password must have at least 8 characters"}
     validates :name, format: {without: /[0-9]/, message: "Name cannot contain numbers"}
 
@@ -23,13 +22,6 @@ class User < ApplicationRecord
     has_many :caller_calls, foreign_key: "caller_id", class_name: "Call"
     has_many :callers, through: :callers_calls, class_name: "User"
 
-
-    def is_speaker
-        language = Language.find_by_slug(params[:slug])
-        if self.languages.include?(language)
-            # self.id == 
-        end
-    end
 
 
 end

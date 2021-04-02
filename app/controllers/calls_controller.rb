@@ -12,17 +12,23 @@ class CallsController < ApplicationController
 
     def create
         @call = Call.new(call_params)
-        @call.language_id = @language.id
-        # binding.pry
-        # @call.duration = params["users"]["duration"].strftime("%M")
+        @call.language = @language
+        # @call.duration = params["call"]["duration"].strftime("%M")
+        binding.pry
         if current_user.languages.include?(@language)
             speaker_to_current_user
-            redirect_to language_call_path(@language, @call)
+            redirect to "/languages/#{@language.slug}/calls/#{@call.id}"
+            # redirect_to language_call_path(@language.slug, @call)
         else
-            # binding.pry
-            caller_to_current_user
-            # @call.speaker.id = @language.users.
-            redirect_to language_call_path(@language, @call)
+            if @call.save
+                caller_to_current_user
+                # @call.speaker.id = @language.users.
+                flash[:message] = "Call not available"
+                "/languages/#{@language.slug}/calls/#{@call.id}"
+                # redirect_to language_call_path(@language.slug, @call)
+            else
+                render :new
+            end
         end
     end
 

@@ -5,17 +5,6 @@ class Call < ApplicationRecord
     belongs_to :caller, class_name: "User"   
     
 
-    def is_speaker
-        # If a user speaks a language
-
-        # in USER class
-        # if self.languages.include?(@language) 
-        #     self = @speaker
-        # else
-        #     self = @caller
-        # end
-    end
-
     def select_random_speaker
         # Set amount of speakers (Users class?)
             @speakers = Speaker.all

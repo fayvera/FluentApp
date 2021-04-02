@@ -12,6 +12,10 @@ class LanguagesController < ApplicationController
 
     def show
         @language = Language.find_by_slug(params[:slug])
+        if current_user.languages.include?(@language)
+            #add flash
+            redirect_to languages_path
+        end
         if @language.nil?  
             redirect_to languages_path
         end 

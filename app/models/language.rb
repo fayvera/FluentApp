@@ -2,12 +2,8 @@ class Language < ApplicationRecord
     has_many :calls 
     has_many :user_languages
 
-    has_many :users, through: :user_languages
-    # Add speakers and callers
-
-    # has_many :speakers, through: :user_languages, class_name: "User"
-    # has_many :callers, through: :user_languages, :source => "User"
-
+    has_many :speakers, through: :calls
+    has_many :callers, through: :calls
 
     include Slug::InstanceMethods
     extend Slug::ClassMethods
@@ -24,12 +20,4 @@ class Language < ApplicationRecord
         # end
 
 
-
-    def speakers
-
-    end
-
-    def callers
-
-    end
 end
