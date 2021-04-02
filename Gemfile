@@ -24,6 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 gem 'pry'
 

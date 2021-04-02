@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
             redirect_to user_path(@user)
         else
             @user = User.new
-            render :new
+            render :new, error: "Invalid Credentials"
         end
     end 
 
