@@ -24,6 +24,12 @@ class User < ApplicationRecord
     has_many :callers, through: :callers_calls, class_name: "User"
 
 
+    def is_speaker
+        language = Language.find_by_slug(params[:slug])
+        if self.languages.include?(language)
+            # self.id == 
+        end
+    end
 
 
 end
