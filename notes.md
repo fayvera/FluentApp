@@ -28,7 +28,7 @@
 
 [ ] Format of "Duration" under calls tables so that it is saved in "new" form.
 
-[ ] Create custom method for calls to select random user to be either caller or speaker
+[x] Create custom method for calls to select random user to be either caller or speaker
 
 [ ] OmniAuth
 

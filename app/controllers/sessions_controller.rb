@@ -23,11 +23,16 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        binding.pry
-        @user = User.from_omniauth(auth)
-        if @user.valid?
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
+        @user = User.find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |u|
+            u.email = auth["info"]["email"]
+            u.password = SecureRandom.hex(20)
+            u.username = auth["info"]["name"].downcase.gsub(" ", "_")
+        end
+            if @user.save
+                session[:user_id] = @user.id
+                redirect_to user_path(@user.slug)
+            else
+                render :new
         end
     end
 

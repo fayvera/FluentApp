@@ -13,20 +13,22 @@ class CallsController < ApplicationController
     def create
         @call = Call.new(call_params)
         @call.language = @language
-        # @call.duration = params["call"]["duration"].strftime("%M")
-        # binding.pry
         @call.select_random_speaker
-        if current_user.languages.include?(@language)
-            speaker_to_current_user
-            redirect_to language_call_path(@language.slug, @call.id)
-        else
-            caller_to_current_user
-            
-            if @call.save
-                flash[:message] = "Call Booked"
+        # @call.duration = params["call"]["duration"].strftime("%M")
+        if @language.speakers.count == 0
+            flash[:message] = "Sorry, no speakers available for this language!"
+            redirect_to languages_path
+        else 
+            if current_user.languages.include?(@language)
                 redirect_to language_call_path(@language.slug, @call.id)
             else
-                render :new
+                @call.caller_id = current_user.id
+                if @call.save
+                    flash[:message] = "Call Booked"
+                    redirect_to language_call_path(@language.slug, @call.id)
+                else
+                    render :new
+                end
             end
         end
     end
@@ -43,13 +45,6 @@ class CallsController < ApplicationController
         )
     end
 
-    # def speaker_to_current_user
-    #     @call.speaker_id = current_user.id 
-    # end 
-
-    def caller_to_current_user
-        @call.caller_id = current_user.id
-    end
 
     def find_user
         @user = User.find_by_slug(params[:slug])

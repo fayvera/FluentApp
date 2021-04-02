@@ -13,7 +13,7 @@ class LanguagesController < ApplicationController
     def show
         @language = Language.find_by_slug(params[:slug])
         if current_user.languages.include?(@language)
-            #add flash
+            flash[:message] = "You cannot make a call in this language since you already speak it!"
             redirect_to languages_path
         end
         if @language.nil?  

@@ -29,12 +29,11 @@
 
   <body>
 
-  <% flash.each do |type, msg| %>
-    <div>
-      <%= msg %>
-    </div>
-  <% end %>
-
+  <%= flash[:message] %>
+  
+  <div class="footer">
+  <%= image_tag('footer.png', width:'100%')%>
+  </div>
     <%= yield %>
   </body>
 </html>
