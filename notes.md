@@ -24,3 +24,17 @@
 
 <!-- Application layout, without being on the static, login, or signup pages-->
 
+
+
+[ ] Format of "Duration" under calls tables so that it is saved in "new" form.
+
+[ ] Create custom method for calls to select random user to be either caller or speaker
+
+[ ] If a user knows the language, they should not be able to make that call and be redirected to the 
+    language index page with a flash message indicating why
+
+[ ] Set timer clock for duration of call and ability to end call
+
+[ ] Show User's calls in show page 
+
+[ ] Clean up CSS for links to languages

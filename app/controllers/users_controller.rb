@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     end
 
     def create
+
         @user = User.new(user_params)
         if @user.valid?
             @user.save
@@ -23,6 +24,9 @@ class UsersController < ApplicationController
 
     def show
         if @user.nil?  
+            redirect_to user_path(current_user.slug)
+        elsif
+            @user == !current_user
             redirect_to user_path(current_user.slug)
         end 
     end

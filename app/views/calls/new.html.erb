@@ -2,7 +2,7 @@
 <div class="center">
     <h1 class="center">Schedule a call</h1>
 
-<%= form_for @call, url: new_language_call_path do |f| %>
+<%= form_for @call, url: language_calls_path do |f| %>
     <div>
     <%= f.label :schedule_time, "Select a date and time" %><br>
     <%= f.datetime_field :schedule_time %><br/><br>
