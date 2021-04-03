@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     validates_presence_of :email, message: "Please fill out all fields"
     validates_uniqueness_of :email
-    # validates :password, length: {minimum: 8, message: "Must have at least 8 characters"}
+    validates :password, length: {minimum: 8, message: "Must have at least 8 characters"}
     validates :name, format: {without: /[0-9]/, message: "Name cannot contain numbers"}
 
 
@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
     has_many :user_languages
     has_many :languages, through: :user_languages
-    
+
 
     #as a caller
     has_many :speaker_calls, foreign_key: "speaker_id", class_name: "Call"
