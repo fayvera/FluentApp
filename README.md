@@ -19,17 +19,8 @@ Be sure to bundle with your bundler of choice.
 bundle install
 ```
 Create a `.env` file in the main directory. It should be included in the `.gitignore` file.
-In the `.env` file, add the appropriate "GOOCLE_CLIENT_ID" and "GOOGLE_CLIENT_SECRET". 
+In the `.env` file, add the appropriate `GOOCLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`. 
 
-## Usage
-
-```ruby
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
