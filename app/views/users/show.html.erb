@@ -27,7 +27,7 @@
 </div>
 
 <div>
-<h4>Calls you've done</h4>
+<h4>Calls you've taken</h4>
     <ul>
         <% @user.speaker_calls.each do |call| %>
             <p><%= call.language.name %> | <%= call.schedule_time %> | <%= call.duration %></p>
@@ -36,7 +36,7 @@
 </div>  
 <br>
 <div>
-<h4>Calls you've taken</h4>
+<h4>Calls you've done</h4>
     <ul>
         <% @user.caller_calls.each do |call| %>
             <p><%= call.language.name %> | <%= call.schedule_time %> | <%= call.duration %></p>

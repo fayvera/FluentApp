@@ -2,8 +2,8 @@ class Language < ApplicationRecord
     has_many :calls 
     has_many :user_languages
 
-    has_many :speakers, through: :calls
-    has_many :callers, through: :calls
+    # has_many :speakers, through: :user_languages
+    # has_many :callers, through: :user_languages
 
     include Slug::InstanceMethods
     extend Slug::ClassMethods

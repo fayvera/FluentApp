@@ -21,4 +21,7 @@ class User < ApplicationRecord
     has_many :caller_calls, foreign_key: "caller_id", class_name: "Call"
     has_many :callers, through: :caller_calls, class_name: "User"
 
+    def self.can_speak(language)
+        User.all.select {|u| u.languages.include?(language)}
+    end
 end
