@@ -5,6 +5,7 @@ class CallsController < ApplicationController
 
     def new
         @call = Call.new
+         
     end
 
     def show
@@ -14,37 +15,18 @@ class CallsController < ApplicationController
         @call = Call.new(call_params)
         @call.language = @language
         @call.select_random_speaker
-        # @call.duration = params["call"]["duration"].strftime("%M")
-    
-        #         if u.count == 0
-        #             flash[:message] = "Sorry, no speakers available for this language!"
-        #             redirect_to languages_path
-        #         else 
-                    # if current_user.languages.include?(@language)
-                    #     flash[:message] = "You already speak this language!"
-                    #     redirect_to language_call_path(@language.slug, @call.id)
-                    # else
-                    #     @call.caller_id = current_user.id
-                    #     # binding.pry
-                    #     if @call.save
-                    #         redirect_to language_call_path(@language.slug, @call.id)
-                    #     else
-                    #         flash[:message] = "Unable to book call"
-                    #         render :new
-                    #     end
-                    # end
-        #         end
-        #     end
-        # end
-        @call.caller_id = current_user.id
-                        if @call.save
-                            redirect_to language_call_path(@language.slug, @call.id)
-                        else
-                            flash[:message] = "Unable to book call"
-                            render :new
-                        end
-        
-
+        if current_user.languages.include?(@language)
+            flash[:message] = "You already speak this language!"
+            redirect_to language_call_path(@language.slug, @call.id)
+        else
+           @call.caller_id = current_user.id
+            if @call.save
+                redirect_to language_call_path(@language.slug, @call.id)
+            else
+                flash[:message] = "Unable to book call"
+                render :new
+           end
+        end
     end
 
 
