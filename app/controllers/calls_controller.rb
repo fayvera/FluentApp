@@ -15,20 +15,26 @@ class CallsController < ApplicationController
         @call.language = @language
         @call.select_random_speaker
         # @call.duration = params["call"]["duration"].strftime("%M")
-        if @language.speakers.count == 0
-            flash[:message] = "Sorry, no speakers available for this language!"
-            redirect_to languages_path
-        else 
-            if current_user.languages.include?(@language)
-                flash[:message] = "You already speak this language!"
-                redirect_to language_call_path(@language.slug, @call.id)
-            else
-                @call.caller_id = current_user.id
-                if @call.save
-                    # flash[:message] = "Call Booked"
-                    redirect_to language_call_path(@language.slug, @call.id)
-                else
-                    render :new
+        u = []
+        User.all.each do |user|
+            if user.language_ids.include?(@call.language.id)
+                u << user
+                if u.count == 0
+                    flash[:message] = "Sorry, no speakers available for this language!"
+                    redirect_to languages_path
+                else 
+                    if current_user.languages.include?(@language)
+                        flash[:message] = "You already speak this language!"
+                        redirect_to language_call_path(@language.slug, @call.id)
+                    else
+                        @call.caller_id = current_user.id
+                        if @call.save
+                            # flash[:message] = "Call Booked"
+                            redirect_to language_call_path(@language.slug, @call.id)
+                        else
+                            render :new
+                        end
+                    end
                 end
             end
         end

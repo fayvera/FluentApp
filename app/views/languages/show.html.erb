@@ -4,13 +4,13 @@
 <% u = [] %>
 <% @users.each do |user| %>
     <% if user.language_ids.include?(@language.id) %>
-    <% u << user %>
+        <% u << user %>
+    <% end %>
+<% end %>
         <% if u.count == 1 %>
-        <p> There is 1 speaker for this language</p>
+            <p> There is 1 speaker for this language</p>
         <% else %>
-        <p> There are <%= u.count %> speakers for this language</p>
-        <% end %>
-    <% end %>    
+            <p> There are <%= u.count %> speakers for this language</p>  
 <% end %>
 
     </br>
