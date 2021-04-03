@@ -15,10 +15,7 @@ class CallsController < ApplicationController
         @call.language = @language
         @call.select_random_speaker
         # @call.duration = params["call"]["duration"].strftime("%M")
-        # u = []
-        # User.all.each do |user|
-        # #     if user.language_ids.include?(@call.language.id)
-        # #         u << user
+    
         #         if u.count == 0
         #             flash[:message] = "Sorry, no speakers available for this language!"
         #             redirect_to languages_path
