@@ -1,6 +1,6 @@
 class CallsController < ApplicationController
     before_action :verified_user
-    before_action :find_user, :associate_speakers, :find_language, only: [:new, :create, :show]
+    before_action :find_user, :find_language, only: [:new, :create, :show]
     
 
     def new
@@ -53,12 +53,6 @@ class CallsController < ApplicationController
 
     def find_language
         @language = Language.find_by_slug(params["language_slug"])
-    end
-
-    def associate_speakers
-        if @user.languages.include?(@language)
-            @language.speakers << @user
-        end
     end
 
     def set_duration

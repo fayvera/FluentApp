@@ -29,7 +29,6 @@ class SessionsController < ApplicationController
             u.username = auth["info"]["name"].downcase.gsub(" ", "_")
         end
         if @user.save
-            # binding.pry
                 session[:user_id] = @user.id
                 redirect_to user_path(@user.slug)
             else
