@@ -11,6 +11,7 @@ class LanguagesController < ApplicationController
     end
 
     def show
+        @users = User.all
         @language = Language.find_by_slug(params[:slug])
         if current_user.languages.include?(@language)
             flash[:message] = "You cannot make a call in this language since you already speak it!"
@@ -50,7 +51,7 @@ class LanguagesController < ApplicationController
     end
 
     def language_params
-        params.require(:language).permit(:name)
+        params.require(:language).permit(:name, :speaker, :caller)
     end
 
     def is_admin?

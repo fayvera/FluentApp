@@ -21,14 +21,15 @@ class SessionsController < ApplicationController
         session.delete(:user_id)
         redirect_to root_path
     end
-
+        
     def omniauth
         @user = User.find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |u|
             u.email = auth["info"]["email"]
             u.password = SecureRandom.hex(20)
             u.username = auth["info"]["name"].downcase.gsub(" ", "_")
         end
-            if @user.save
+        if @user.save
+            # binding.pry
                 session[:user_id] = @user.id
                 redirect_to user_path(@user.slug)
             else

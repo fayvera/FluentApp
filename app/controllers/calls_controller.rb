@@ -1,7 +1,7 @@
 class CallsController < ApplicationController
     before_action :verified_user
-    before_action :find_user, :find_language, only: [:new, :create, :show]
-   
+    before_action :find_user, :associate_speakers, :find_language, only: [:new, :create, :show]
+    
 
     def new
         @call = Call.new
@@ -20,11 +20,12 @@ class CallsController < ApplicationController
             redirect_to languages_path
         else 
             if current_user.languages.include?(@language)
+                flash[:message] = "You already speak this language!"
                 redirect_to language_call_path(@language.slug, @call.id)
             else
                 @call.caller_id = current_user.id
                 if @call.save
-                    flash[:message] = "Call Booked"
+                    # flash[:message] = "Call Booked"
                     redirect_to language_call_path(@language.slug, @call.id)
                 else
                     render :new
@@ -52,6 +53,12 @@ class CallsController < ApplicationController
 
     def find_language
         @language = Language.find_by_slug(params["language_slug"])
+    end
+
+    def associate_speakers
+        if @user.languages.include?(@language)
+            @language.speakers << @user
+        end
     end
 
     def set_duration

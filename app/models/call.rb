@@ -8,6 +8,7 @@ class Call < ApplicationRecord
 
     def select_random_speaker
         s = self.language.speakers.order("RANDOM()").first
-        self.speaker = s
+        # binding.pry
+        self.speaker = s && self.speaker != self.caller
     end
 end
