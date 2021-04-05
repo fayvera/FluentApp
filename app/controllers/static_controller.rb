@@ -6,4 +6,7 @@ class StaticController < ApplicationController
             redirect_to user_path(current_user)
         end
     end
+
+    def admin
+    end
 end

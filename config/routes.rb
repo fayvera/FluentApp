@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   resources :users, param: :slug  
 
   scope '/admin' do
+    get '/', to: "static#admin", as: "/admin"
+    get '/login', to: "sessions#new"
+    get '/signup', to: "users#new"
     resources :languages, only: [:new, :create, :edit, :update, :delete]
     resources :users, param: :slug
-    # get '/admin/login', to "sessions#new"
-    # get '/admin/signup', to "users#new"
   end
   get 'auth/:provider/callback', to: 'sessions#omniauth'
 
