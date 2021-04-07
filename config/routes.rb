@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     get '/', to: "static#admin", as: "/admin"
     get '/login', to: "sessions#new"
     get '/signup', to: "users#new"
-    resources :languages, only: [:new, :create, :edit, :update, :delete]
+    post '/login', to: "sessions#create"
+    resources :languages, param: :slug, only: [:new, :create, :edit, :update, :delete]
     resources :users, param: :slug
   end
   get 'auth/:provider/callback', to: 'sessions#omniauth'

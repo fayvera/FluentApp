@@ -19,7 +19,8 @@ class UsersController < ApplicationController
             render 'new'
         end
     end
-
+    
+    
 
     def show
         if @user.nil?  
@@ -62,5 +63,11 @@ class UsersController < ApplicationController
     def get_languages
         @languages = Language.all
     end
+
+    # def is_admin?
+    #     if admin_url
+    #         @user.admin = true
+    #     end
+    # end
 
 end

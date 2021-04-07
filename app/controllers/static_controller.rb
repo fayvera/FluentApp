@@ -8,5 +8,9 @@ class StaticController < ApplicationController
     end
 
     def admin
+        # if current_user.admin == true
+        #     redirect_to 
+        # end
     end
+
 end

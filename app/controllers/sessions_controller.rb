@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
     skip_before_action :verified_user 
+    # before_action :is_admin?, except: [:new]
 
 
     def new
         @user = User.new
+        # binding.pry
     end
 
     def create
@@ -41,4 +43,10 @@ class SessionsController < ApplicationController
     def auth
         request.env["omniauth.auth"]
     end
+
+    # def is_admin?
+    #     if admin_url
+    #         @user.admin = true
+    #     end
+    # end
 end
